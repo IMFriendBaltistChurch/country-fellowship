@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Events — Country Fellowship Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%231e3a5f'/><rect x='13' y='5' width='6' height='22' fill='%23f59e0b'/><rect x='5' y='12' width='22' height='6' fill='%23f59e0b'/></svg>">
+  <style>
+    .page-hero { padding: 5.5rem 0 3.5rem; background: var(--light-bg); border-bottom: 2px solid var(--navy); }
+    .page-hero h1 { font-size: clamp(2rem,4vw,3rem); font-weight: 900; letter-spacing: -.03em; color: var(--navy); margin-top: .35rem; }
+    .events-section { padding: 5rem 0; }
+    .events-intro { max-width:600px; color:var(--text-mid); line-height:1.8; margin-bottom:3rem; font-size:.95rem; }
+    .event-list { display:flex; flex-direction:column; gap:1.25rem; }
+    .event-item { display:grid; grid-template-columns:80px 1fr auto; gap:1.5rem; align-items:start; background:#fff; border:2px solid #e2e8f0; border-radius:10px; padding:1.75rem; transition:border-color .2s, box-shadow .2s, transform .2s; }
+    .event-item:hover { border-color:var(--navy); box-shadow:0 6px 24px rgba(30,58,95,.12); transform:translateY(-2px); }
+    .event-date-box { text-align:center; background:var(--navy); border-radius:8px; padding:.75rem .5rem; }
+    .event-month { font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; color:var(--gold); display:block; }
+    .event-day { font-size:1.75rem; font-weight:900; color:#fff; line-height:1; }
+    .event-info h3 { font-size:1.05rem; font-weight:800; color:var(--navy); margin-bottom:.35rem; }
+    .event-info p { font-size:.875rem; color:var(--text-mid); line-height:1.65; }
+    .event-time { font-size:.8rem; font-weight:800; color:var(--gold-dark); white-space:nowrap; text-transform:uppercase; letter-spacing:.06em; }
+    .recurring-badge { display:inline-block; font-size:.65rem; font-weight:800; text-transform:uppercase; letter-spacing:.1em; background:var(--gold-light); color:var(--navy); padding:.2rem .6rem; border-radius:4px; margin-bottom:.5rem; }
+    .section-divider { margin:3rem 0 2rem; font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.14em; color:#94a3b8; }
+    @media (max-width:640px) { .event-item { grid-template-columns:60px 1fr; } .event-time { display:none; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-badge">✝</span>
+        <span class="logo-text">Country Fellowship<small>Church · Bryan, TX</small></span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-drop">
+          <a href="about.html">About ▾</a>
+          <ul class="drop-menu">
+            <li><a href="about.html#mission">Mission &amp; Vision</a></li>
+            <li><a href="about.html#beliefs">What We Believe</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="prayer.html">Prayer</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="give.html">Give</a></li>
+        <li class="nav-cta"><a href="new.html">I'm New</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="sec-eyebrow">Country Fellowship Church</span>
+      <h1>Upcoming Events</h1>
+    </div>
+  </section>
+
+  <section class="events-section">
+    <div class="container">
+      <p class="events-intro">Join us for worship, community, and seasonal celebrations. All are welcome — bring your family, neighbors, and friends.</p>
+
+      <p class="section-divider">— Weekly Services —</p>
+      <div class="event-list">
+        <div class="event-item">
+          <div class="event-date-box"><span class="event-month">Every</span><span class="event-day">Sun</span></div>
+          <div class="event-info">
+            <span class="recurring-badge">Recurring</span>
+            <h3>Sunday Morning Worship</h3>
+            <p>Join us every Sunday for worship with contemporary and traditional music, prayer, and a Scripture-centered message. All are welcome.</p>
+          </div>
+          <span class="event-time">9:00 &amp; 11:00 AM</span>
+        </div>
+      </div>
+
+      <p class="section-divider">— Special Events —</p>
+      <div class="event-list">
+        <div class="event-item">
+          <div class="event-date-box"><span class="event-month">Dec</span><span class="event-day">07</span></div>
+          <div class="event-info"><h3>Advent Candle Service</h3><p>A reflective gathering marking the beginning of Advent. We light candles of hope, peace, joy, and love as we prepare our hearts for Christmas.</p></div>
+          <span class="event-time">6:30 PM</span>
+        </div>
+        <div class="event-item">
+          <div class="event-date-box"><span class="event-month">Dec</span><span class="event-day">14</span></div>
+          <div class="event-info"><h3>Special Christmas Music</h3><p>An evening of festive worship — Christmas carols, choral music, and seasonal hymns celebrating the season together as a church family.</p></div>
+          <span class="event-time">6:30 PM</span>
+        </div>
+        <div class="event-item">
+          <div class="event-date-box"><span class="event-month">Dec</span><span class="event-day">24</span></div>
+          <div class="event-info"><h3>Christmas Eve Service</h3><p>Celebrate the birth of Jesus with candlelight, carols, and a message of hope. Bring your whole family — all are welcome on this holy night.</p></div>
+          <span class="event-time">5:00 &amp; 7:00 PM</span>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;padding:1.75rem;background:var(--navy);border-radius:10px;">
+        <p style="font-size:.9rem;color:rgba(255,255,255,.85);"><strong style="color:var(--gold);">Stay Connected</strong> — For the full event calendar, visit <a href="https://mycountryfellowship.com/events" target="_blank" rel="noopener" style="color:var(--gold);font-weight:800;">mycountryfellowship.com/events</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="footer-logo">✝ Country Fellowship Church</div><p>Called to mission. Grounded in truth. Serving Bryan, TX for the glory of God.</p></div>
+        <div class="footer-col"><h4>Navigate</h4><ul><li><a href="about.html">About</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="media.html">Media</a></li><li><a href="events.html">Events</a></li><li><a href="blog.html">Blog</a></li><li><a href="give.html">Give</a></li></ul></div>
+        <div class="footer-col"><h4>Find Us</h4><address>Bryan, TX 77803<br>(979) 229-9342</address><div class="social-row"><a href="#" class="social-btn">Facebook</a><a href="#" class="social-btn">YouTube</a><a href="#" class="social-btn">Instagram</a></div></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 Country Fellowship Church · Bryan, TX 77803 · Demo only</span><a href="../index.html">← Back to Demo Hub</a></div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => { const o = navLinks.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+    document.addEventListener('click', e => { if (!e.target.closest('.nav')) navLinks.classList.remove('open'); });
+  </script>
+</body>
+</html>
