@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Give — Country Fellowship Church</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Lato:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%233c1e08'/><rect x='13' y='5' width='6' height='22' fill='%23f2e4cc'/><rect x='5' y='12' width='22' height='6' fill='%23f2e4cc'/></svg>">
+  <style>
+    .page-hero { padding: 5.5rem 0 3.5rem; background: var(--bg-warm); border-bottom: 1px solid var(--border); }
+    .page-hero h1 { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(2rem,4vw,3rem); font-weight:700; color: var(--primary); margin-top: .35rem; }
+    .give-section { padding: 5rem 0; background: var(--bg); }
+    .give-intro { max-width: 640px; }
+    .give-intro p { font-size: .975rem; color: var(--stone-light); line-height: 1.85; margin-bottom: 1rem; }
+    .verse-block { background: var(--primary); color: #fff; border-radius: 14px; padding: 2.5rem; margin: 2.5rem 0; max-width: 680px; }
+    .verse-block blockquote { font-family: 'Playfair Display', Georgia, serif; font-size: 1.2rem; line-height: 1.75; font-style: italic; margin-bottom: 1rem; }
+    .verse-block cite { font-size: .78rem; font-weight: 700; color: var(--cream); text-transform: uppercase; letter-spacing: .1em; font-style: normal; }
+    .give-methods { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
+    .give-card { border: 1px solid var(--border-soft); border-radius: 12px; padding: 2rem 1.5rem; background: var(--white); text-align: center; transition: border-color .2s, transform .2s, box-shadow .2s; }
+    .give-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(184,115,32,.1); }
+    .give-card .icon { font-size: 2rem; display: block; margin-bottom: .75rem; }
+    .give-card h3 { font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; font-weight: 700; color: var(--primary); margin-bottom: .5rem; }
+    .give-card p { font-size: .85rem; color: var(--stone-light); line-height: 1.65; margin-bottom: 1.25rem; }
+    .give-card a { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-size: .8rem; font-weight: 700; padding: .55rem 1.25rem; border-radius: 8px; }
+    .give-card a:hover { background: var(--accent-hover); }
+    @media (max-width:700px) { .give-methods { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-emblem">✝</div>
+        <div class="logo-text">Country Fellowship<small>Church · Bryan, TX</small></div>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li class="has-drop">
+          <a href="about.html">About ▾</a>
+          <ul class="drop-menu">
+            <li><a href="about.html#mission">Mission &amp; Vision</a></li>
+            <li><a href="about.html#beliefs">What We Believe</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="prayer.html">Prayer</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="give.html">Give</a></li>
+        <li class="nav-cta"><a href="new.html">I'm New</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="sec-label">Generosity</span>
+      <h1>Give</h1>
+    </div>
+  </section>
+
+  <section class="give-section">
+    <div class="container">
+      <div class="give-intro">
+        <span class="sec-label">Why We Give</span>
+        <p>God is generous — and so He calls us to be as well. Generosity is an expression of gratitude and trust, not obligation. When we give, we participate in what God is doing in our community and beyond.</p>
+        <p>Your giving supports Sunday gatherings, community outreach, missions, and the ongoing work of making disciples here in Bryan, TX.</p>
+      </div>
+      <div class="verse-block">
+        <blockquote>"For where your treasure is, there your heart will be also."</blockquote>
+        <cite>Matthew 6:21</cite>
+      </div>
+      <h2 class="sec-title" style="font-size:1.4rem;margin-bottom:.5rem;">Ways to Give</h2>
+      <p style="color:var(--stone-light);font-size:.9rem;margin-bottom:0;">Choose the method that works best for you.</p>
+      <div class="give-methods">
+        <div class="give-card"><span class="icon">💻</span><h3>Give Online</h3><p>Convenient and secure. Set up a one-time or recurring gift through our online giving portal.</p><a href="https://mycountryfellowship.com/give" target="_blank" rel="noopener">Give Now →</a></div>
+        <div class="give-card"><span class="icon">🏛</span><h3>Give In Person</h3><p>Drop your gift in the offering during our Sunday morning services at 9:00 AM or 11:00 AM.</p><a href="events.html">Service Times →</a></div>
+        <div class="give-card"><span class="icon">✉️</span><h3>Mail a Check</h3><p>Make checks payable to <em>Country Fellowship Church</em> and mail to our address in Bryan, TX.</p><a href="about.html#contact">Our Address →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand"><div class="footer-logo">✝ Country Fellowship Church</div><p>A warm, welcoming family in Bryan, TX. Rooted in the Word, committed to one another.</p></div>
+        <div class="footer-col"><h4>Navigate</h4><ul><li><a href="about.html">About</a></li><li><a href="prayer.html">Prayer</a></li><li><a href="media.html">Media</a></li><li><a href="events.html">Events</a></li><li><a href="blog.html">Blog</a></li><li><a href="give.html">Give</a></li></ul></div>
+        <div class="footer-col"><h4>Find Us</h4><address>Bryan, TX 77803<br>(979) 229-9342</address><div class="social-row"><a href="#" class="social-pill">Facebook</a><a href="#" class="social-pill">YouTube</a><a href="#" class="social-pill">Instagram</a></div></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2024 Country Fellowship Church · Bryan, TX 77803 · Demo only</span><a href="../index.html">← Back to Demo Hub</a></div>
+  </footer>
+  <script>
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', () => { const o = navLinks.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+    document.addEventListener('click', e => { if (!e.target.closest('.nav')) navLinks.classList.remove('open'); });
+  </script>
+</body>
+</html>
