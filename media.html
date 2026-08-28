@@ -12,9 +12,8 @@
   <style>
     .page-hero { padding: 4rem 0 3rem; background: var(--bg-light); border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-size: clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; color: var(--black); margin-top: .35rem; }
-    .media-section { padding: 3rem 0 5rem; }
 
-    /* Latest video hero — dark background like original site */
+    /* Latest — dark hero like original site */
     .latest-hero { background: #1c1c1c; padding: 3.5rem 0; }
     .latest-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: center; }
     .latest-text { color: #fff; }
@@ -23,15 +22,14 @@
     .latest-date { font-size:.85rem; color:#9ca3af; }
     .latest-player { position:relative; padding-bottom:56.25%; height:0; border-radius:10px; overflow:hidden; }
     .latest-player iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    @media (max-width:700px) { .latest-inner { grid-template-columns:1fr; } }
 
-    /* Library section */
-    .library-section { padding: 4rem 0 5rem; }
-    .library-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--black); text-align: center; margin-bottom: .5rem; }
-    .library-divider { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin: 0 auto 2.5rem; }
-    .library-iframe-wrap { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 32px rgba(0,0,0,.1); border: 1px solid var(--border); }
-    .library-iframe-wrap iframe { display: block; width: 100%; border: none; }
-
-    @media (max-width:700px) { .latest-inner { grid-template-columns: 1fr; } }
+    /* Library CTA */
+    .library-cta { padding: 5rem 0 6rem; text-align: center; }
+    .library-cta h2 { font-size: 1.5rem; font-weight: 700; color: var(--black); margin-bottom: .75rem; }
+    .library-cta p { font-size: .975rem; color: #6b7280; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
+    .library-cta .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem; padding: .85rem 2rem; border-radius: 10px; text-decoration: none; transition: background .2s; }
+    .library-cta .btn-primary:hover { background: #047857; }
   </style>
 </head>
 <body>
@@ -71,7 +69,7 @@
     </div>
   </section>
 
-  <!-- Most Recent — Subsplash single video player -->
+  <!-- Most Recent -->
   <div class="latest-hero">
     <div class="container">
       <div class="latest-inner">
@@ -92,20 +90,12 @@
     </div>
   </div>
 
-  <!-- Media Library — Subsplash app embed showing all content -->
-  <section class="library-section">
+  <!-- Browse All CTA -->
+  <section class="library-cta">
     <div class="container">
-      <h2>Media Library</h2>
-      <div class="library-divider"></div>
-      <div class="library-iframe-wrap">
-        <iframe
-          src="https://subsplash.com/countryfellowship/media"
-          title="Country Fellowship Church Media Library"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen"
-          allowfullscreen
-          height="820">
-        </iframe>
-      </div>
+      <h2>Browse All Messages</h2>
+      <p>Our full library of sermons and teachings is available on our church website. Click below to explore past messages.</p>
+      <a href="https://mycountryfellowship.com/media" target="_blank" rel="noopener" class="btn-primary">View Full Media Library →</a>
     </div>
   </section>
 
