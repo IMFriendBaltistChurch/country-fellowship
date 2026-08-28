@@ -1,201 +1,259 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Country Fellowship Church — Homepage Redesign Demos</title>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: #f4f4f5;
-      color: #18181b;
-      min-height: 100vh;
-    }
-    header {
-      background: #18181b;
-      color: #fff;
-      padding: 3rem 1.5rem 2.5rem;
-      text-align: center;
-    }
-    .hub-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #71717a;
-      margin-bottom: 0.75rem;
-    }
-    header h1 {
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-    header p {
-      color: #a1a1aa;
-      font-size: 0.9rem;
-      max-width: 460px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    main {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1.5rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .card {
-      background: #fff;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
-    }
-    .card-swatch {
-      height: 130px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2.25rem;
-      letter-spacing: 0;
-    }
-    .swatch-a { background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #065f46 100%); }
-    .swatch-b { background: linear-gradient(135deg, #78350f 0%, #b45309 50%, #d97706 100%); }
-    .swatch-c { background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 50%, #f59e0b 100%); }
-    .card-body { padding: 1.75rem; }
-    .badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      border-radius: 20px;
-      margin-bottom: 0.85rem;
-    }
-    .badge-a { background: #d1fae5; color: #065f46; }
-    .badge-b { background: #fef3c7; color: #92400e; }
-    .badge-c { background: #dbeafe; color: #1e40af; }
-    .card-body h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-    .card-body p {
-      font-size: 0.875rem;
-      color: #71717a;
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-    }
-    .card-traits {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      margin-bottom: 1.5rem;
-    }
-    .trait {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      background: #f4f4f5;
-      color: #52525b;
-    }
-    .btn-open {
-      display: inline-block;
-      text-decoration: none;
-      padding: 0.65rem 1.4rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: opacity 0.15s;
-    }
-    .btn-open:hover { opacity: 0.88; }
-    .btn-a { background: #059669; color: #fff; }
-    .btn-b { background: #d97706; color: #fff; }
-    .btn-c { background: #2563eb; color: #fff; }
-    footer {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      font-size: 0.8rem;
-      color: #a1a1aa;
-      border-top: 1px solid #e4e4e7;
-      margin-top: 1rem;
-    }
-    footer strong { color: #71717a; }
-  </style>
+  <title>Country Fellowship Church — Modern / Minimal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23059669'/><rect x='13' y='5' width='6' height='22' fill='white'/><rect x='5' y='12' width='22' height='6' fill='white'/></svg>">
 </head>
 <body>
-  <header>
-    <p class="hub-label">Design Review · Internal Use Only</p>
-    <h1>Country Fellowship Church<br>Homepage Redesign Demos</h1>
-    <p>Three distinct visual directions using the same church content. Select a demo to preview in full.</p>
+
+  <!-- ======= NAVIGATION ======= -->
+  <header class="nav-wrap">
+    <nav class="nav">
+      <a href="#" class="nav-logo">
+        <span class="logo-icon">✝</span>
+        <span class="logo-text">
+          Country Fellowship
+          <small>Church · Bryan, TX</small>
+        </span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#">Home</a></li>
+        <li class="has-drop">
+          <a href="about.html">About ▾</a>
+          <ul class="drop-menu">
+            <li><a href="about.html#mission">Mission &amp; Vision</a></li>
+            <li><a href="about.html#beliefs">What We Believe</a></li>
+            <li><a href="about.html#leadership">Leadership</a></li>
+            <li><a href="about.html#contact">Contact</a></li>
+          </ul>
+        </li>
+        <li><a href="prayer.html">Prayer</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="give.html">Give</a></li>
+        <li class="nav-cta"><a href="new.html">I'm New</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main>
-    <!-- Demo A -->
-    <div class="card">
-      <div class="card-swatch swatch-a">🤍</div>
-      <div class="card-body">
-        <span class="badge badge-a">Demo A</span>
-        <h2>Modern / Minimal</h2>
-        <p>Clean typography, generous whitespace, and a restrained green accent. Contemporary and understated.</p>
-        <div class="card-traits">
-          <span class="trait">Inter sans-serif</span>
-          <span class="trait">Emerald accent</span>
-          <span class="trait">High whitespace</span>
-          <span class="trait">Sharp grid</span>
+  <!-- ======= HERO ======= -->
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Colossians 2:7</span>
+      <h1>back to<br>your roots</h1>
+      <p class="hero-sub">
+        Whether you're just getting started or in the second half of life,
+        we're here to grow and apply God's Word — together.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary">I'm New Here</a>
+        <a href="#" class="btn btn-ghost">Browse Sermons</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SERVICE TIMES ======= -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-header">
+        <div>
+          <span class="sec-label">Join Us</span>
+          <h2 class="sec-title">Weekly Gatherings</h2>
         </div>
-        <a href="demo-a/index.html" class="btn-open btn-a">Open Demo A →</a>
+        <a href="#" class="btn btn-outline">Plan Your Visit</a>
+      </div>
+
+      <div class="services-grid">
+        <div class="svc-card">
+          <span class="svc-day">Sunday</span>
+          <span class="svc-time">9:00 AM</span>
+          <span class="svc-name">Bible Study</span>
+        </div>
+        <div class="svc-card">
+          <span class="svc-day">Sunday</span>
+          <span class="svc-time">10:00 AM</span>
+          <span class="svc-name">Worship Service</span>
+        </div>
+        <div class="svc-card">
+          <span class="svc-day">Wednesday</span>
+          <span class="svc-time">5:30 PM</span>
+          <span class="svc-name">Youth Bible Study</span>
+        </div>
+        <div class="svc-card">
+          <span class="svc-day">Wednesday</span>
+          <span class="svc-time">6:00 PM</span>
+          <span class="svc-name">Prayer Meeting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= ABOUT / WELCOME ======= -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="sec-label">Welcome</span>
+          <h2 class="sec-title">Rooted. Growing.<br>Together.</h2>
+          <p>
+            Through small groups, social events, our Weekly Gathering, and much more,
+            you'll find resources and encouragement on your continued journey.
+            Come and join us in Bryan, TX.
+          </p>
+          <p class="mission-pull">"Finish Well for Jesus!"</p>
+          <a href="#" class="btn btn-outline">Learn More About Us</a>
+        </div>
+
+        <div class="about-quote">
+          <blockquote>
+            "…rooted and built up in him and established in the faith,
+            just as you were taught, abounding in thanksgiving."
+          </blockquote>
+          <cite>— Colossians 2:7</cite>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= LATEST SERMON ======= -->
+  <section class="sermons" id="sermons">
+    <div class="container">
+      <span class="sec-label">Media</span>
+      <h2 class="sec-title">Latest Sermon</h2>
+
+      <div class="sermon-card">
+        <div class="sermon-thumb">
+          <div class="play-icon">▶</div>
+          <p>Latest Message</p>
+        </div>
+        <div class="sermon-body">
+          <span class="sermon-tag">Weekly Message</span>
+          <h3>This Week's Sermon</h3>
+          <p>
+            Catch up on the latest teaching from Country Fellowship Church.
+            Our messages are available online to watch or listen to at any time —
+            wherever you are on your journey.
+          </p>
+          <div class="sermon-actions">
+            <a href="#" class="btn btn-primary">Watch Now</a>
+            <a href="#" class="text-link">View All Sermons →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= CONNECT / VISIT ======= -->
+  <section class="connect" id="connect">
+    <div class="container">
+      <div class="connect-grid">
+        <div class="connect-left">
+          <h2>Plan Your Visit</h2>
+          <p>
+            We'd love to have you join us. Our Sunday services are the perfect
+            first step — no prior experience required. Just come as you are.
+          </p>
+          <a href="#" class="btn btn-primary">I'm New Here</a>
+        </div>
+
+        <div class="connect-right">
+          <div class="connect-row">
+            <strong>Location</strong>
+            <span>Bryan, TX 77803</span>
+          </div>
+          <div class="connect-row">
+            <strong>Phone</strong>
+            <span>(979) 229-9342</span>
+          </div>
+          <div class="connect-row">
+            <strong>Sunday</strong>
+            <span>Bible Study 9:00 AM · Worship 10:00 AM</span>
+          </div>
+          <div class="connect-row">
+            <strong>Wednesday</strong>
+            <span>Youth 5:30 PM · Prayer Meeting 6:00 PM</span>
+          </div>
+          <div class="connect-row">
+            <strong>Follow Us</strong>
+            <span>@countryfellowship</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= FOOTER ======= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">✝ Country Fellowship Church</div>
+          <p>Rooted in the Word. Serving the Bryan, TX community with grace, truth, and a heart for discipleship.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Mission &amp; Vision</a></li>
+            <li><a href="#">What We Believe</a></li>
+            <li><a href="#">Prayer</a></li>
+            <li><a href="#">Media</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Give</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Find Us</h4>
+          <address>
+            Bryan, TX 77803<br>
+            (979) 229-9342
+          </address>
+          <div class="social-row">
+            <a href="https://www.facebook.com/CountryFellowship/" class="social-chip" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.youtube.com/@countryfellowship" class="social-chip" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.instagram.com/countryfellowship/" class="social-chip" target="_blank" rel="noopener">Instagram</a>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Demo B -->
-    <div class="card">
-      <div class="card-swatch swatch-b">🌾</div>
-      <div class="card-body">
-        <span class="badge badge-b">Demo B</span>
-        <h2>Warm / Family-Oriented</h2>
-        <p>Amber and cream tones, serif headings, soft curves. Inviting, personal, and rooted in community.</p>
-        <div class="card-traits">
-          <span class="trait">Playfair Display serif</span>
-          <span class="trait">Amber palette</span>
-          <span class="trait">Rounded shapes</span>
-          <span class="trait">Warm imagery</span>
-        </div>
-        <a href="demo-b/index.html" class="btn-open btn-b">Open Demo B →</a>
-      </div>
+    <div class="footer-bottom">
+      <span>© 2024 Country Fellowship Church · Bryan, TX 77803 · Demo only</span>
+      
     </div>
-
-    <!-- Demo C -->
-    <div class="card">
-      <div class="card-swatch swatch-c">✝</div>
-      <div class="card-body">
-        <span class="badge badge-c">Demo C</span>
-        <h2>Mission / Community</h2>
-        <p>Deep navy with bold gold accents. Purpose-driven layout centered on "Finish Well for Jesus."</p>
-        <div class="card-traits">
-          <span class="trait">Montserrat bold</span>
-          <span class="trait">Navy + gold</span>
-          <span class="trait">Mission-first</span>
-          <span class="trait">Strong CTAs</span>
-        </div>
-        <a href="demo-c/index.html" class="btn-open btn-c">Open Demo C →</a>
-      </div>
-    </div>
-  </main>
-
-  <footer>
-    <strong>Country Fellowship Church</strong> · Bryan, TX 77803 · (979) 229-9342<br>
-    Demo project only — not a live deployment. Content sourced from mycountryfellowship.com.
   </footer>
+
+  <script>
+    // Mobile nav toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    toggle.addEventListener('click', function () {
+      const open = navLinks.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('.nav')) {
+        navLinks.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      }
+    });
+  </script>
 </body>
 </html>
+
+
