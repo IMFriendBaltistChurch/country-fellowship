@@ -10,33 +10,41 @@
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23059669'/><rect x='13' y='5' width='6' height='22' fill='white'/><rect x='5' y='12' width='22' height='6' fill='white'/></svg>">
   <style>
-    .page-hero { padding: 5.5rem 0 3.5rem; background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .page-hero { padding: 4rem 0 3rem; background: var(--bg-light); border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-size: clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; color: var(--black); margin-top: .35rem; }
-    .media-section { padding: 5rem 0; }
-    .media-intro { max-width: 600px; color: #6b7280; line-height: 1.8; margin-bottom: 3rem; font-size: .95rem; }
-    .media-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
-    .sermon-card {
-      border: 1px solid var(--border); border-radius: 12px; overflow: hidden; background: #fff;
-      transition: border-color .2s, box-shadow .2s, transform .2s;
-    }
-    .sermon-card:hover { border-color: var(--accent); box-shadow: 0 6px 24px rgba(5,150,105,.1); transform: translateY(-3px); }
-    .sermon-thumb {
-      background: linear-gradient(135deg, var(--black) 0%, #1f2937 100%);
-      padding: 1.5rem; display: flex; align-items: center; justify-content: center; min-height: 120px; position: relative;
-    }
-    .sermon-thumb .play { font-size: 2rem; opacity: .75; }
-    .sermon-date-badge {
-      position: absolute; top: .75rem; right: .75rem; background: var(--accent); color: #fff;
-      font-size: .65rem; font-weight: 700; letter-spacing: .08em; padding: .2rem .6rem; border-radius: 4px;
-    }
-    .sermon-body { padding: 1.25rem; }
-    .sermon-body .type { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); display: block; margin-bottom: .4rem; }
-    .sermon-body h3 { font-size: .9rem; font-weight: 700; color: var(--black); margin-bottom: .3rem; line-height: 1.3; }
-    .sermon-body .speaker { font-size: .78rem; color: #9ca3af; }
-    .watch-link { display: inline-flex; align-items: center; gap: .35rem; font-size: .78rem; font-weight: 600; color: var(--accent); text-decoration: none; margin-top: .75rem; }
-    .watch-link:hover { text-decoration: underline; }
-    @media (max-width:900px) { .media-grid { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width:640px) { .media-grid { grid-template-columns: 1fr; } }
+    .featured-wrap { padding: 3rem 0 0; }
+    .featured-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:var(--accent); margin-bottom:.75rem; display:block; }
+    .featured-title { font-size:1.25rem; font-weight:700; color:var(--black); margin-bottom:.25rem; }
+    .featured-date { font-size:.82rem; color:#6b7280; margin-bottom:1.25rem; }
+    .video-responsive { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:14px; background:#000; box-shadow:0 8px 40px rgba(0,0,0,.2); }
+    .video-responsive iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; border-radius:14px; }
+    .grid-section { padding: 3.5rem 0 5rem; }
+    .grid-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; }
+    .grid-header h2 { font-size:1.1rem; font-weight:700; color:var(--black); }
+    .grid-header a { font-size:.82rem; font-weight:600; color:var(--accent); text-decoration:none; }
+    .grid-header a:hover { text-decoration:underline; }
+    .video-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+    .video-thumb { cursor:pointer; border-radius:12px; overflow:hidden; border:1px solid var(--border); background:#fff; transition:transform .2s,box-shadow .2s,border-color .2s; }
+    .video-thumb:hover { transform:translateY(-4px); box-shadow:0 8px 28px rgba(5,150,105,.12); border-color:var(--accent); }
+    .thumb-img-wrap { position:relative; aspect-ratio:16/9; overflow:hidden; background:#111; }
+    .thumb-img-wrap img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s; }
+    .video-thumb:hover .thumb-img-wrap img { transform:scale(1.04); }
+    .thumb-play { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.15); transition:background .2s; }
+    .video-thumb:hover .thumb-play { background:rgba(0,0,0,.3); }
+    .thumb-play-btn { width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.9); display:flex; align-items:center; justify-content:center; font-size:1rem; padding-left:3px; box-shadow:0 2px 12px rgba(0,0,0,.3); }
+    .thumb-info { padding:.875rem 1rem; }
+    .thumb-info .type { font-size:.65rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); display:block; margin-bottom:.3rem; }
+    .thumb-info h3 { font-size:.88rem; font-weight:700; color:var(--black); margin-bottom:.2rem; line-height:1.3; }
+    .thumb-info .date { font-size:.75rem; color:#9ca3af; }
+    .modal-overlay { display:none; position:fixed; inset:0; z-index:1000; background:rgba(0,0,0,.85); backdrop-filter:blur(6px); align-items:center; justify-content:center; padding:1rem; }
+    .modal-overlay.open { display:flex; }
+    .modal-box { position:relative; width:100%; max-width:900px; }
+    .modal-close { position:absolute; top:-42px; right:0; background:none; border:none; color:#fff; font-size:1.75rem; cursor:pointer; line-height:1; padding:.25rem .5rem; opacity:.75; transition:opacity .15s; }
+    .modal-close:hover { opacity:1; }
+    .modal-video { position:relative; padding-bottom:56.25%; height:0; border-radius:12px; overflow:hidden; background:#000; }
+    .modal-video iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+    @media (max-width:900px) { .video-grid { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:600px) { .video-grid { grid-template-columns:1fr; } }
   </style>
 </head>
 <body>
@@ -76,127 +84,39 @@
     </div>
   </section>
 
-  <section class="media-section">
+  <div class="featured-wrap">
     <div class="container">
-      <p class="media-intro">Catch up on recent Sunday services below. For the full archive of sermons and teachings, visit <a href="https://mycountryfellowship.com/media" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">mycountryfellowship.com/media</a>.</p>
-
-      <div class="media-grid">
-        <!-- Recent sermons listed newest first -->
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Aug 9</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — August 9, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Aug 2</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — August 2, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jul 26</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — July 26, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jul 19</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — July 19, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jul 12</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — July 12, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jul 5</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — July 5, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jun 28</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — June 28, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jun 21</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — June 21, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jun 14</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — June 14, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">Jun 7</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — June 7, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">May 31</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — May 31, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-        <div class="sermon-card">
-          <div class="sermon-thumb"><span class="play">▶</span><span class="sermon-date-badge">May 3</span></div>
-          <div class="sermon-body">
-            <span class="type">Sunday Service</span>
-            <h3>Sunday Service — May 3, 2026</h3>
-            <span class="speaker">Country Fellowship Church</span>
-            <a href="https://mycountryfellowship.com/media" class="watch-link" target="_blank" rel="noopener">Watch ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <div style="text-align:center;margin-top:2.5rem;">
-        <a href="https://mycountryfellowship.com/media" target="_blank" rel="noopener" style="display:inline-block;background:var(--black);color:#fff;text-decoration:none;padding:.8rem 2rem;border-radius:8px;font-size:.875rem;font-weight:700;">View Full Archive ↗</a>
+      <span class="featured-label">▶ Most Recent</span>
+      <p class="featured-title">Sunday Service — December 29, 2024</p>
+      <p class="featured-date">Country Fellowship Church · Bryan, TX</p>
+      <div class="video-responsive">
+        <iframe src="https://www.youtube.com/embed/i-5guQ5hhZ0?rel=0&modestbranding=1"
+          title="Sunday Service — December 29, 2024"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen></iframe>
       </div>
     </div>
+  </div>
+
+  <section class="grid-section">
+    <div class="container">
+      <div class="grid-header">
+        <h2>More Messages</h2>
+        <a href="https://www.youtube.com/@countryfellowship" target="_blank" rel="noopener">View full archive on YouTube →</a>
+      </div>
+      <div class="video-grid" id="videoGrid"></div>
+    </div>
   </section>
+
+  <div class="modal-overlay" id="videoModal" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+      <div class="modal-video">
+        <iframe id="modalFrame" src="" title="Video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container">
@@ -220,9 +140,9 @@
           <h4>Find Us</h4>
           <address>Bryan, TX 77803<br>(979) 229-9342</address>
           <div class="social-row">
-            <a href="#" class="social-chip">Facebook</a>
-            <a href="#" class="social-chip">YouTube</a>
-            <a href="#" class="social-chip">Instagram</a>
+            <a href="https://www.facebook.com/CountryFellowship/" class="social-chip" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://www.youtube.com/@countryfellowship" class="social-chip" target="_blank" rel="noopener">YouTube</a>
+            <a href="https://www.instagram.com/countryfellowship/" class="social-chip" target="_blank" rel="noopener">Instagram</a>
           </div>
         </div>
       </div>
@@ -234,15 +154,39 @@
   </footer>
 
   <script>
+    const videos = [
+      { id: 'i4FFRSkUYIA', title: 'Sunday Service', date: 'December 22, 2024' },
+      { id: 'e1gHHAczVBA', title: 'Sunday Service', date: 'December 8, 2024' },
+      { id: 'S2rnUrNHOc4', title: 'Shopping for Peace at Christmas', date: 'December 7, 2024' },
+      { id: 'XU5WlPAeDYU', title: 'Sunday Service', date: 'December 1, 2024' },
+      { id: '8GRPi-Reeig', title: 'Sunday Service', date: 'November 24, 2024' },
+      { id: 'WXwLk7r5hGA', title: 'Sunday Service', date: 'November 17, 2024' },
+      { id: 'zAK_d5Q27g8', title: 'Sunday Service', date: 'November 10, 2024' },
+      { id: 'P5dq__lfDbQ', title: 'Sunday Service', date: 'November 3, 2024' },
+      { id: 'E1Laza9uoTw', title: 'Sunday Service', date: 'October 27, 2024' },
+      { id: 'hqoFrOFUeQM', title: 'Sunday Service', date: 'October 20, 2024' },
+      { id: '8Kli-41aeks', title: 'Welcome &amp; Announcements', date: 'October 6, 2024' },
+    ];
+    const grid = document.getElementById('videoGrid');
+    videos.forEach(v => {
+      grid.innerHTML += `<div class="video-thumb" onclick="playVideo('${v.id}')"><div class="thumb-img-wrap"><img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy"><div class="thumb-play"><div class="thumb-play-btn">▶</div></div></div><div class="thumb-info"><span class="type">Sunday Service</span><h3>${v.title}</h3><span class="date">${v.date}</span></div></div>`;
+    });
+    function playVideo(id) {
+      document.getElementById('modalFrame').src = `https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1`;
+      document.getElementById('videoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(e) {
+      if (e && e.target !== document.getElementById('videoModal') && !e.target.classList.contains('modal-close')) return;
+      document.getElementById('modalFrame').src = '';
+      document.getElementById('videoModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') { document.getElementById('modalFrame').src = ''; document.getElementById('videoModal').classList.remove('open'); document.body.style.overflow = ''; } });
     const toggle = document.querySelector('.nav-toggle');
     const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', function () {
-      const open = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.nav')) navLinks.classList.remove('open');
-    });
+    toggle.addEventListener('click', () => { const o = navLinks.classList.toggle('open'); toggle.setAttribute('aria-expanded', o); });
+    document.addEventListener('click', e => { if (!e.target.closest('.nav')) navLinks.classList.remove('open'); });
   </script>
 </body>
 </html>

@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\USER\\\\Downloads\\\\country-fellowship\")",
+      "WebFetch(domain:mycountryfellowship.com)",
+      "WebFetch(domain:storage1.snappages.site)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:www.youtube.com)",
+      "mcp__claude-in-chrome__navigate",
+      "mcp__claude-in-chrome__javascript_tool"
+    ]
+  }
+}
