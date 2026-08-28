@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,28 +8,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='4' fill='%23059669'/><rect x='13' y='5' width='6' height='22' fill='white'/><rect x='5' y='12' width='22' height='6' fill='white'/></svg>">
+  <link rel="icon" href="https://mycountryfellowship.com/favicon.ico">
   <style>
-    .page-hero { padding: 5.5rem 0 3.5rem; background: var(--bg-light); border-bottom: 1px solid var(--border); }
+    .page-hero { padding: 4rem 0 3rem; background: var(--bg-light); border-bottom: 1px solid var(--border); }
     .page-hero h1 { font-size: clamp(2rem,4vw,3rem); font-weight:700; letter-spacing:-.03em; color: var(--black); margin-top: .35rem; }
-    .give-section { padding: 5rem 0; }
-    .give-intro { max-width: 640px; }
-    .give-intro p { font-size: .975rem; color: #6b7280; line-height: 1.85; margin-bottom: 1rem; }
-    .verse-block {
-      background: var(--black); color: #fff; border-radius: 14px; padding: 2.5rem; margin: 2.5rem 0;
-      max-width: 680px;
-    }
-    .verse-block blockquote { font-size: 1.15rem; line-height: 1.75; font-style: italic; margin-bottom: 1rem; }
-    .verse-block cite { font-size: .8rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-style: normal; }
-    .give-methods { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; margin-top: 3rem; }
-    .give-card { border: 1px solid var(--border); border-radius: 12px; padding: 2rem 1.5rem; background: #fff; text-align: center; transition: border-color .2s, transform .2s, box-shadow .2s; }
-    .give-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 6px 24px rgba(5,150,105,.1); }
-    .give-card .icon { font-size: 2rem; display: block; margin-bottom: .75rem; }
-    .give-card h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: .5rem; }
-    .give-card p { font-size: .85rem; color: #6b7280; line-height: 1.65; margin-bottom: 1.25rem; }
-    .give-card a { display: inline-block; background: var(--accent); color: #fff; text-decoration: none; font-size: .8rem; font-weight: 700; padding: .55rem 1.25rem; border-radius: 8px; }
-    .give-card a:hover { background: #047857; }
-    @media (max-width:700px) { .give-methods { grid-template-columns: 1fr; } }
+    .give-section { padding: 5rem 0 6rem; }
+    .give-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: 4rem; align-items: start; }
+    .give-text { }
+    .give-text p { font-size: .975rem; color: #6b7280; line-height: 1.85; margin-bottom: 1rem; }
+    .verse-block { background: var(--black); color: #fff; border-radius: 14px; padding: 2rem; margin-top: 2rem; }
+    .verse-block blockquote { font-size: 1.05rem; line-height: 1.75; font-style: italic; margin-bottom: .75rem; }
+    .verse-block cite { font-size: .75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-style: normal; }
+    .give-iframe-wrap { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 4px 32px rgba(0,0,0,.08); background: #fff; }
+    .give-iframe-wrap iframe { display: block; width: 100%; border: none; }
+    @media (max-width:800px) { .give-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
   </style>
 </head>
 <body>
@@ -71,29 +63,32 @@
 
   <section class="give-section">
     <div class="container">
-      <div class="give-intro">
-        <span class="sec-label">Why We Give</span>
-        <p>God is generous — and so He calls us to be as well. Generosity is not about obligation; it's an expression of gratitude and trust. When we give, we participate in what God is doing in our community and beyond.</p>
-        <p>Your giving supports the ministry of Country Fellowship Church: our Sunday gatherings, community outreach, missions, and the ongoing work of making disciples.</p>
-      </div>
+      <div class="give-grid">
+        <!-- Left: text -->
+        <div class="give-text">
+          <span class="sec-label">Why We Give</span>
+          <p>God is generous — and so He calls us to be as well. Generosity is not about obligation; it's an expression of gratitude and trust. When we give, we participate in what God is doing in our community and beyond.</p>
+          <p>Your giving supports the ministry of Country Fellowship Church: our Sunday gatherings, community outreach, missions, and the ongoing work of making disciples.</p>
+          <div class="verse-block">
+            <blockquote>"For where your treasure is, there your heart will be also."</blockquote>
+            <cite>Matthew 6:21</cite>
+          </div>
+        </div>
 
-      <div class="verse-block">
-        <blockquote>"For where your treasure is, there your heart will be also."</blockquote>
-        <cite>Matthew 6:21</cite>
-      </div>
-
-            <div class="subsplash-wrap">
-        <div class="sp-subsplash-holder">
-          <iframe id="subsplash-embed-36"
+        <!-- Right: Subsplash giving iframe -->
+        <div class="give-iframe-wrap">
+          <iframe
+            id="subsplash-embed-36"
             title="Giving"
             src="https://subsplash.com/u/-RMXX2P/give?embed=true"
-            width="100%" height="660"
-            frameborder="0" scrolling="no"
-            style="display:block;border:none;overflow:hidden;transition:height 0.325s ease;"
+            height="660"
+            frameborder="0"
+            scrolling="no"
             allow="clipboard-read; clipboard-write;"
-            allowfullscreen></iframe>
+            allowfullscreen>
+          </iframe>
         </div>
-      </div>      </div>
+      </div>
     </div>
   </section>
 
@@ -127,25 +122,15 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Country Fellowship Church · Bryan, TX 77803 · Demo only</span>
-      
+      <span>© 2024 Country Fellowship Church · Bryan, TX 77803</span>
     </div>
   </footer>
 
   <script>
     const toggle = document.querySelector('.nav-toggle');
     const navLinks = document.getElementById('nav-links');
-    toggle.addEventListener('click', function () {
-      const open = navLinks.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
-    });
-    document.addEventListener('click', function (e) {
-      if (!e.target.closest('.nav')) navLinks.classList.remove('open');
-    });
+    toggle.addEventListener('click', function () { const open = navLinks.classList.toggle('open'); toggle.setAttribute('aria-expanded', open); });
+    document.addEventListener('click', function (e) { if (!e.target.closest('.nav')) navLinks.classList.remove('open'); });
   </script>
 </body>
 </html>
-
-
-
-
