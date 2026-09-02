@@ -7,7 +7,22 @@
       "WebFetch(domain:github.com)",
       "WebFetch(domain:www.youtube.com)",
       "mcp__claude-in-chrome__navigate",
-      "mcp__claude-in-chrome__javascript_tool"
+      "mcp__claude-in-chrome__javascript_tool",
+      "Bash(git rebase *)",
+      "Bash(git stash *)",
+      "Bash(git push *)",
+      "Bash(curl -sI https://mycountryfellowship.com/)",
+      "Bash(curl -s https://mycountryfellowship.com/)",
+      "Bash(curl -sL https://mycountryfellowship.com/)",
+      "Bash(curl -sL \"https://mycountryfellowship.com/\")",
+      "Bash(curl -sI \"https://mycountryfellowship.com/favicon.ico\")",
+      "Bash(curl -sI \"https://storage1.snappages.site/RMXX2P/favicon.ico\")",
+      "Bash(curl -sL \"https://mycountryfellowship.com/media\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git remote *)",
+      "Bash(curl -sI \"https://mycountryfellowship.com/apple-touch-icon.png\")",
+      "Bash(curl -sI \"https://mycountryfellowship.com/logo.png\")"
     ]
   }
 }
