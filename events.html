@@ -32,7 +32,34 @@
       display: inline-block; font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
       background: var(--accent-tint); color: var(--accent); padding: .2rem .6rem; border-radius: 20px; margin-bottom: .5rem;
     }
-    .events-embed { min-height: 320px; }
+    /* Calendar */
+    .cal-wrap { margin: 2.5rem 0 3.5rem; }
+    .cal-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 1.25rem; }
+    .cal-month { font-size: 1.15rem; font-weight: 700; color: var(--black); letter-spacing: -.01em; }
+    .cal-nav { display: flex; gap: .5rem; }
+    .cal-nav button { width: 36px; height: 36px; border: 1px solid var(--border); background: #fff; border-radius: 8px; cursor: pointer; font-size: 1rem; color: var(--black); line-height: 1; transition: border-color .2s, background .2s; }
+    .cal-nav button:hover { border-color: var(--accent); background: var(--accent-tint); }
+    .cal-today-btn { width: auto !important; padding: 0 .85rem; font-size: .8rem !important; font-weight: 600; }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+    .cal-dow { text-align: center; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #9ca3af; padding-bottom: .5rem; }
+    .cal-day { position: relative; min-height: 84px; border: 1px solid var(--border); border-radius: 8px; background: #fff; padding: .4rem .45rem; text-align: left; font: inherit; cursor: default; overflow: hidden; }
+    .cal-day.is-outside { background: var(--bg-light); border-color: transparent; }
+    .cal-day.is-outside .cal-daynum { color: #d1d5db; }
+    .cal-day.is-today { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+    .cal-daynum { font-size: .78rem; font-weight: 600; color: var(--black); }
+    .cal-day.is-today .cal-daynum { color: var(--accent); }
+    .cal-ev { display: block; font-size: .62rem; line-height: 1.3; margin-top: .22rem; padding: .12rem .3rem; border-radius: 4px; background: var(--accent-tint); color: var(--accent-dark, #047857); font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cal-ev.is-special { background: #eef2ff; color: #4338ca; }
+    .cal-more { font-size: .6rem; color: #9ca3af; margin-top: .18rem; display: block; }
+    .cal-legend { display: flex; flex-wrap: wrap; gap: 1.25rem; margin-top: 1.1rem; font-size: .78rem; color: #6b7280; }
+    .cal-legend span { display: inline-flex; align-items: center; gap: .4rem; }
+    .cal-swatch { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+    .cal-empty { color: #9ca3af; font-size: .9rem; padding: 1rem 0; }
+    @media (max-width: 700px) {
+      .cal-day { min-height: 62px; padding: .3rem; }
+      .cal-ev { font-size: 0; padding: 0; height: 5px; width: 5px; border-radius: 50%; margin-top: .3rem; display: inline-block; margin-right: 3px; }
+      .cal-more { display: none; }
+    }
     .section-divider { margin: 3rem 0 2rem; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: #9ca3af; }
     @media (max-width:640px) { .event-item { grid-template-columns: 60px 1fr; } .event-time { display: none; } }
   </style>
@@ -78,6 +105,25 @@
     <div class="container">
       <p class="events-intro">Join us for worship, community, and seasonal celebrations. All are welcome at every gathering.</p>
 
+      <div class="cal-wrap">
+        <div class="cal-head">
+          <div class="cal-month" id="cal-month">&nbsp;</div>
+          <div class="cal-nav">
+            <button type="button" id="cal-prev" aria-label="Previous month">&#8249;</button>
+            <button type="button" class="cal-today-btn" id="cal-today">Today</button>
+            <button type="button" id="cal-next" aria-label="Next month">&#8250;</button>
+          </div>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-legend">
+          <span><i class="cal-swatch" style="background:#d1fae5"></i> Weekly gathering</span>
+          <span><i class="cal-swatch" style="background:#e0e7ff"></i> Special event</span>
+        </div>
+      </div>
+
+      <p class="section-divider">— This Month —</p>
+      <div class="event-list" id="cal-list"></div>
+
       <p class="section-divider">— Weekly Gatherings —</p>
 
       <div class="event-list">
@@ -108,11 +154,6 @@
         </div>
       </div>
 
-      <p class="section-divider">— Special Events —</p>
-
-      <div class="events-embed">
-        <script id="subsplash-embed-kjzbh82" type="text/javascript">var target = document.getElementById("subsplash-embed-kjzbh82");var script = document.createElement("script");script.type = "text/javascript";script.onload = function() {subsplashEmbed("+mg79/lb/ca/+kjzbh82?embed&branding","https://subsplash.com/","subsplash-embed-kjzbh82");};script.src = "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js";target.parentElement.insertBefore(script, target);</script>
-      </div>
     </div>
   </section>
 
@@ -150,6 +191,142 @@
       
     </div>
   </footer>
+
+  <script>
+    /* ---- Calendar ----------------------------------------------------
+       Weekly gatherings are generated from WEEKLY; one-off events live in
+       SPECIAL_EVENTS. To add an event, append an entry there:
+         { date: "2026-12-24", time: "5:00 PM", title: "Christmas Eve Service" }
+       date is YYYY-MM-DD. Keep the list in any order.
+    ------------------------------------------------------------------- */
+    const WEEKLY = [
+      { dow: 0, time: "9:00 AM",  title: "Bible Study" },
+      { dow: 0, time: "10:00 AM", title: "Worship Service" },
+      { dow: 3, time: "5:30 PM",  title: "Youth Bible Study" },
+      { dow: 3, time: "6:00 PM",  title: "Prayer Meeting" }
+    ];
+
+    const SPECIAL_EVENTS = [
+      // add special events here
+    ];
+
+    const MONTHS = ["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+    const DOW = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+    const grid  = document.getElementById("cal-grid");
+    const label = document.getElementById("cal-month");
+    const list  = document.getElementById("cal-list");
+
+    const today = new Date();
+    const todayKey = ymd(today);
+    let view = new Date(today.getFullYear(), today.getMonth(), 1);
+
+    function ymd(d) {
+      return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0")
+                            + "-" + String(d.getDate()).padStart(2, "0");
+    }
+
+    // Every event on one day, weekly gatherings first, then specials.
+    function eventsOn(date) {
+      const key = ymd(date);
+      const weekly = WEEKLY.filter(function (w) { return w.dow === date.getDay(); })
+                           .map(function (w) { return { time: w.time, title: w.title, special: false }; });
+      const special = SPECIAL_EVENTS.filter(function (e) { return e.date === key; })
+                                    .map(function (e) { return { time: e.time, title: e.title, note: e.note, special: true }; });
+      return weekly.concat(special);
+    }
+
+    function render() {
+      label.textContent = MONTHS[view.getMonth()] + " " + view.getFullYear();
+      grid.innerHTML = "";
+
+      DOW.forEach(function (d) {
+        const h = document.createElement("div");
+        h.className = "cal-dow";
+        h.textContent = d;
+        grid.appendChild(h);
+      });
+
+      // start on the Sunday of the week containing the 1st
+      const cursor = new Date(view);
+      cursor.setDate(1 - cursor.getDay());
+
+      for (let i = 0; i < 42; i++) {
+        const day = new Date(cursor.getFullYear(), cursor.getMonth(), cursor.getDate() + i);
+        const cell = document.createElement("div");
+        cell.className = "cal-day";
+        if (day.getMonth() !== view.getMonth()) cell.classList.add("is-outside");
+        if (ymd(day) === todayKey) cell.classList.add("is-today");
+
+        const num = document.createElement("span");
+        num.className = "cal-daynum";
+        num.textContent = day.getDate();
+        cell.appendChild(num);
+
+        const evs = eventsOn(day);
+        evs.slice(0, 2).forEach(function (e) {
+          const tag = document.createElement("span");
+          tag.className = "cal-ev" + (e.special ? " is-special" : "");
+          tag.textContent = e.title;
+          tag.title = e.time + " · " + e.title;
+          cell.appendChild(tag);
+        });
+        if (evs.length > 2) {
+          const more = document.createElement("span");
+          more.className = "cal-more";
+          more.textContent = "+" + (evs.length - 2) + " more";
+          cell.appendChild(more);
+        }
+        grid.appendChild(cell);
+      }
+
+      renderList();
+    }
+
+    // Special events falling in the month on screen.
+    function renderList() {
+      const y = view.getFullYear(), m = view.getMonth();
+      const items = SPECIAL_EVENTS
+        .filter(function (e) {
+          const d = new Date(e.date + "T00:00:00");
+          return d.getFullYear() === y && d.getMonth() === m;
+        })
+        .sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+
+      if (!items.length) {
+        list.innerHTML = '<p class="cal-empty">No special events scheduled this month — '
+          + 'our weekly gatherings continue as usual.</p>';
+        return;
+      }
+
+      list.innerHTML = items.map(function (e) {
+        const d = new Date(e.date + "T00:00:00");
+        return '<div class="event-item">'
+             +   '<div class="event-date-box">'
+             +     '<span class="event-month">' + MONTHS[d.getMonth()].slice(0, 3) + '</span>'
+             +     '<span class="event-day">' + String(d.getDate()).padStart(2, "0") + '</span>'
+             +   '</div>'
+             +   '<div class="event-info"><h3>' + e.title + '</h3>'
+             +     (e.note ? '<p>' + e.note + '</p>' : '')
+             +   '</div>'
+             +   '<span class="event-time">' + (e.time || "") + '</span>'
+             + '</div>';
+      }).join("");
+    }
+
+    document.getElementById("cal-prev").addEventListener("click", function () {
+      view = new Date(view.getFullYear(), view.getMonth() - 1, 1); render();
+    });
+    document.getElementById("cal-next").addEventListener("click", function () {
+      view = new Date(view.getFullYear(), view.getMonth() + 1, 1); render();
+    });
+    document.getElementById("cal-today").addEventListener("click", function () {
+      view = new Date(today.getFullYear(), today.getMonth(), 1); render();
+    });
+
+    render();
+  </script>
 
   <script>
     const toggle = document.querySelector('.nav-toggle');

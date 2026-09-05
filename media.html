@@ -24,11 +24,19 @@
     .latest-player iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
     @media (max-width:700px) { .latest-inner { grid-template-columns:1fr; } }
 
-    /* Full library */
+    /* Sermon archive */
     .library-section { padding: 4.5rem 0 6rem; }
     .library-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--black); margin-bottom: .75rem; }
-    .library-section p { font-size: .975rem; color: #6b7280; line-height: 1.7; margin-bottom: 2.5rem; }
-    .library-embed { min-height: 400px; }
+    .library-section p.lead { font-size: .975rem; color: #6b7280; line-height: 1.7; margin-bottom: 2.25rem; }
+    .sermon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 1rem; }
+    .sermon-btn { text-align: left; font: inherit; cursor: pointer; background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 1.1rem 1.2rem; transition: border-color .2s, box-shadow .2s, transform .2s; }
+    .sermon-btn:hover { border-color: var(--accent); box-shadow: 0 6px 20px rgba(5,150,105,.1); transform: translateY(-2px); }
+    .sermon-btn[aria-current="true"] { border-color: var(--accent); background: var(--accent-tint); }
+    .sermon-btn .s-date { display: block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: .3rem; }
+    .sermon-btn .s-title { display: block; font-size: .95rem; font-weight: 600; color: var(--black); }
+    .archive-more { display: block; margin: 2.25rem auto 0; background: none; border: 1px solid var(--border); border-radius: 10px; padding: .8rem 1.9rem; font: inherit; font-weight: 600; font-size: .875rem; color: var(--black); cursor: pointer; transition: border-color .2s, background .2s; }
+    .archive-more:hover { border-color: var(--accent); background: var(--accent-tint); }
+    .archive-count { text-align: center; font-size: .8rem; color: #9ca3af; margin-top: .9rem; }
   </style>
 </head>
 <body>
@@ -89,14 +97,14 @@
     </div>
   </div>
 
-  <!-- Full Media Library -->
+  <!-- Sermon archive -->
   <section class="library-section">
     <div class="container">
       <h2>Browse All Messages</h2>
-      <p>Our full library of sermons and teachings — search by series, speaker, or date.</p>
-      <div class="library-embed">
-        <script id="subsplash-embed-r94kbvt" type="text/javascript">var target = document.getElementById("subsplash-embed-r94kbvt");var script = document.createElement("script");script.type = "text/javascript";script.onload = function() {subsplashEmbed("+mg79/lb/li/+r94kbvt?embed&branding&1788636161175","https://subsplash.com/","subsplash-embed-r94kbvt");};script.src = "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js";target.parentElement.insertBefore(script, target);</script>
-      </div>
+      <p class="lead">Every Sunday message, newest first. Select one to watch it in the player above.</p>
+      <div class="sermon-grid" id="sermon-grid"></div>
+      <button type="button" class="archive-more" id="archive-more">Show more messages</button>
+      <p class="archive-count" id="archive-count"></p>
     </div>
   </section>
 
@@ -133,6 +141,109 @@
       <span>© 2026 Country Fellowship Church · Bryan, TX 77803</span>
     </div>
   </footer>
+
+  <script>
+    /* Sermon archive. Each entry is a Subsplash media id; the player above
+       loads /media/embed/d/<id>. The newest message is served by the *recent
+       wildcard, so it stays correct without touching this list. */
+    const SERMONS = [
+      { id: "zn4pg9r", date: "Aug 30, 2026" },
+      { id: "c9bzmwx", date: "Aug 23, 2026" },
+      { id: "bff674h", date: "Aug 16, 2026" },
+      { id: "3czwy5t", date: "Aug 9, 2026" },
+      { id: "77829mp", date: "Aug 2, 2026" },
+      { id: "nys2d58", date: "Jul 26, 2026" },
+      { id: "3rxg2hy", date: "Jul 19, 2026" },
+      { id: "bkbwrbx", date: "Jul 12, 2026" },
+      { id: "v9zvpj5", date: "Jul 5, 2026" },
+      { id: "sjngcy2", date: "Jun 28, 2026" },
+      { id: "r5rcdn6", date: "Jun 21, 2026" },
+      { id: "ftkdyst", date: "Jun 14, 2026" },
+      { id: "y24k4nc", date: "Jun 7, 2026" },
+      { id: "83p4nxk", date: "May 31, 2026" },
+      { id: "nystsfj", date: "May 24, 2026" },
+      { id: "2ghsfgg", date: "May 17, 2026" },
+      { id: "n552rxm", date: "May 10, 2026" },
+      { id: "cqth86f", date: "May 3, 2026" },
+      { id: "kcnwc98", date: "Apr 26, 2026" },
+      { id: "8nbqckd", date: "Apr 19, 2026" },
+      { id: "fkb4mv4", date: "Apr 12, 2026" },
+      { id: "9g9h9hr", date: "Apr 5, 2026" },
+      { id: "fp3ypmh", date: "Mar 29, 2026" },
+      { id: "cpgh8yz", date: "Mar 22, 2026" },
+      { id: "rz5pnx3", date: "Mar 15, 2026" },
+      { id: "nx2hrgt", date: "Mar 8, 2026" },
+      { id: "3fh9pvg", date: "Mar 1, 2026" },
+      { id: "xwyjndq", date: "Feb 22, 2026" },
+      { id: "xt76d5p", date: "Feb 15, 2026" },
+      { id: "7vxw7z5", date: "Feb 8, 2026" },
+      { id: "357qnm2", date: "Feb 1, 2026" },
+      { id: "wdrn35c", date: "Jan 25, 2026" },
+      { id: "xf7hppf", date: "Jan 18, 2026" },
+      { id: "gxz5kh8", date: "Jan 11, 2026" },
+      { id: "s43q6rd", date: "Jan 4, 2026" },
+      { id: "xdp9dwf", date: "Dec 28, 2025" },
+      { id: "qyp39pq", date: "Dec 21, 2025" },
+      { id: "drfwk6h", date: "Dec 14, 2025" },
+      { id: "nxd5c98", date: "Dec 7, 2025" },
+      { id: "634y5s5", date: "Nov 30, 2025" },
+      { id: "qx27wps", date: "Nov 23, 2025" },
+      { id: "mm6snw3", date: "Nov 16, 2025" },
+      { id: "5hmd5dg", date: "Nov 9, 2025" },
+      { id: "shkdgjz", date: "Nov 2, 2025" },
+      { id: "9wj5n7v", date: "Oct 26, 2025" },
+      { id: "74j4wgt", date: "Oct 19, 2025" },
+      { id: "jgw2hjk", date: "Oct 12, 2025" },
+      { id: "d4b9qzd", date: "Oct 5, 2025" },
+      { id: "rqhv53x", date: "Sep 28, 2025" },
+      { id: "g2sb46m", date: "Sep 21, 2025" },
+      { id: "wm2wvkk", date: "Sep 14, 2025" },
+      { id: "j47h8hc", date: "Sep 7, 2025" },
+      { id: "s3f29xz", date: "Aug 17, 2025" },
+      { id: "dcjtqv5", date: "Aug 10, 2025" },
+      { id: "xnq6qdx", date: "Jul 27, 2025" }
+    ];
+
+    const PLAYER_BASE = "https://subsplash.com/u/countryfellowshipchurch/media/embed/d/";
+    const PAGE = 12;
+
+    const grid   = document.getElementById("sermon-grid");
+    const more   = document.getElementById("archive-more");
+    const count  = document.getElementById("archive-count");
+    const player = document.querySelector(".latest-player iframe");
+    const heading = document.querySelector(".latest-title");
+    const sub     = document.querySelector(".latest-date");
+
+    let shown = 0;
+
+    function select(btn, s) {
+      player.src = PLAYER_BASE + s.id;
+      heading.textContent = "Sunday Service";
+      sub.textContent = s.date;
+      grid.querySelectorAll('[aria-current="true"]')
+          .forEach(function (b) { b.removeAttribute("aria-current"); });
+      btn.setAttribute("aria-current", "true");
+      document.querySelector(".latest-hero").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function renderMore() {
+      SERMONS.slice(shown, shown + PAGE).forEach(function (s) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "sermon-btn";
+        btn.innerHTML = '<span class="s-date"></span><span class="s-title">Sunday Service</span>';
+        btn.querySelector(".s-date").textContent = s.date;
+        btn.addEventListener("click", function () { select(btn, s); });
+        grid.appendChild(btn);
+      });
+      shown = Math.min(shown + PAGE, SERMONS.length);
+      count.textContent = "Showing " + shown + " of " + SERMONS.length + " messages";
+      if (shown >= SERMONS.length) more.style.display = "none";
+    }
+
+    more.addEventListener("click", renderMore);
+    renderMore();
+  </script>
 
   <script>
     const toggle = document.querySelector('.nav-toggle');
