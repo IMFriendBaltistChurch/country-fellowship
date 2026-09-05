@@ -22,7 +22,8 @@
       "Bash(git commit *)",
       "Bash(git remote *)",
       "Bash(curl -sI \"https://mycountryfellowship.com/apple-touch-icon.png\")",
-      "Bash(curl -sI \"https://mycountryfellowship.com/logo.png\")"
+      "Bash(curl -sI \"https://mycountryfellowship.com/logo.png\")",
+      "Bash(curl -sL \"https://graph.facebook.com/CountryFellowship/picture?type=large&redirect=false\")"
     ]
   }
 }
