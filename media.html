@@ -24,12 +24,11 @@
     .latest-player iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
     @media (max-width:700px) { .latest-inner { grid-template-columns:1fr; } }
 
-    /* Library CTA */
-    .library-cta { padding: 5rem 0 6rem; text-align: center; }
-    .library-cta h2 { font-size: 1.5rem; font-weight: 700; color: var(--black); margin-bottom: .75rem; }
-    .library-cta p { font-size: .975rem; color: #6b7280; max-width: 480px; margin: 0 auto 2rem; line-height: 1.7; }
-    .library-cta .btn-primary { display: inline-block; background: var(--accent); color: #fff; font-weight: 700; font-size: .9rem; padding: .85rem 2rem; border-radius: 10px; text-decoration: none; transition: background .2s; }
-    .library-cta .btn-primary:hover { background: #047857; }
+    /* Full library */
+    .library-section { padding: 4.5rem 0 6rem; }
+    .library-section h2 { font-size: 1.5rem; font-weight: 700; color: var(--black); margin-bottom: .75rem; }
+    .library-section p { font-size: .975rem; color: #6b7280; line-height: 1.7; margin-bottom: 2.5rem; }
+    .library-embed { min-height: 400px; }
   </style>
 </head>
 <body>
@@ -75,12 +74,12 @@
       <div class="latest-inner">
         <div class="latest-text">
           <span class="latest-label">▶ Most Recent</span>
-          <p class="latest-title">Sunday Service</p>
+          <p class="latest-title">Most Recent Message</p>
           <p class="latest-date">Country Fellowship Church · Bryan, TX</p>
         </div>
         <div class="latest-player">
           <iframe
-            src="https://subsplash.com/u/-RMXX2P/media/embed/d/c9bzmwx?&info=0"
+            src="https://subsplash.com/u/countryfellowshipchurch/media/embed/d/*recent"
             title="Most Recent Sermon"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen"
             allowfullscreen>
@@ -90,12 +89,14 @@
     </div>
   </div>
 
-  <!-- Browse All CTA -->
-  <section class="library-cta">
+  <!-- Full Media Library -->
+  <section class="library-section">
     <div class="container">
       <h2>Browse All Messages</h2>
-      <p>Our full library of sermons and teachings is available on our church website. Click below to explore past messages.</p>
-      <a href="https://mycountryfellowship.com/media" target="_blank" rel="noopener" class="btn-primary">View Full Media Library →</a>
+      <p>Our full library of sermons and teachings — search by series, speaker, or date.</p>
+      <div class="library-embed">
+        <script id="subsplash-embed-r94kbvt" type="text/javascript">var target = document.getElementById("subsplash-embed-r94kbvt");var script = document.createElement("script");script.type = "text/javascript";script.onload = function() {subsplashEmbed("+mg79/lb/li/+r94kbvt?embed&branding&1788636161175","https://subsplash.com/","subsplash-embed-r94kbvt");};script.src = "https://dashboard.static.subsplash.com/production/web-client/external/embed-1.1.0.js";target.parentElement.insertBefore(script, target);</script>
+      </div>
     </div>
   </section>
 
